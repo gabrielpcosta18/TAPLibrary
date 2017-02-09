@@ -1,8 +1,102 @@
 package br.edu.ufam.icomp.taplibrary.bd;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import br.edu.ufam.icomp.taplibrary.model.Titulo;
+import br.edu.ufam.icomp.taplibrary.model.Usuario;
+
 /**
  * Created by gabri on 09/02/2017.
  */
 
 public class UsuarioDAO {
+    private SQLiteDatabase bancoDeDados;
+    private static final String NOME_TABELA = "Usuario";
+
+    public UsuarioDAO(Context contexto) {
+        this.bancoDeDados = (new BancoDeDados(contexto)).getWritableDatabase();
+    }
+
+    private Usuario usuarioDoCursor(Cursor cursor) {
+        return new Usuario(cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getInt(9));
+    }
+
+    public Usuario usuarioPorId(int id) {
+        String query = "SELECT * FROM " + NOME_TABELA + " WHERE _id = " + id;
+
+        Cursor cursor = this.bancoDeDados.rawQuery(query, null);
+        if(cursor.moveToNext()) {
+            Usuario usuario = usuarioDoCursor(cursor);
+
+            cursor.close();
+            return usuario;
+        }
+
+        return null;
+    }
+
+    public Cursor todosUsuariosCursor() {
+        return this.bancoDeDados.rawQuery("SELECT *" +
+                " FROM " + NOME_TABELA + " ORDER BY nome", null);
+    }
+
+    public List todosUsuariosLista() {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        Cursor cursor = todosUsuariosCursor();
+
+        while(cursor.moveToNext()) {
+            usuarios.add(usuarioDoCursor(cursor));
+        }
+
+        return usuarios;
+    }
+
+    public boolean adicionarUsuario(Usuario usuario) {
+        try {
+            String sqlCmd = "INSERT INTO " + NOME_TABELA+
+                    "(login, senha, nome, admin)" +
+                    " VALUES ('" + usuario.getLogin() +
+                    "', '" + usuario.getSenha() +
+                    "', '" + usuario.getSenha() +
+                    "', '" + Integer.toString(usuario.getAdmin())
+                    + "')";
+
+            Log.d("SQL", sqlCmd);
+
+            this.bancoDeDados.execSQL(sqlCmd);
+            return true;
+        }
+        catch (SQLException e) {
+            Log.e("TAPLibrary", e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean atualizarUsuario(Usuario usuario) {
+        try {
+            /*String sqlCmd = "UPDATE " + NOME_TABELA +
+                    " SET name = '" + customer.getName() + "' "  +
+                    " WHERE _id = " + customer.getId();
+
+            Log.d("SQL", sqlCmd);
+
+            this.bancoDeDados.execSQL(sqlCmd);*/
+            return true;
+        }
+        catch(SQLException e) {
+            Log.e("TAPLibrary", e.getMessage());
+            return false;
+        }
+    }
 }

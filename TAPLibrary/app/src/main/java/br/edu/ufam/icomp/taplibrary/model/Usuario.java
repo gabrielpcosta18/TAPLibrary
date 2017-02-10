@@ -26,6 +26,10 @@ public class Usuario implements Serializable {
         this.admin = admin;
     }
 
+    public String toString() {
+        return this.nome;
+    }
+
     public int getId() {
         return id;
     }
@@ -64,6 +68,19 @@ public class Usuario implements Serializable {
 
     public void setAdmin(int admin) {
         this.admin = admin;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!Usuario.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        final Usuario outro = (Usuario) obj;
+
+        return this.id == outro.id;
     }
 
 }

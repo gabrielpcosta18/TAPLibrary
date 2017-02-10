@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import br.edu.ufam.icomp.taplibrary.R;
 import br.edu.ufam.icomp.taplibrary.adapter.TituloListaAdapter;
@@ -46,6 +47,7 @@ public class TituloListaActivity extends AppCompatActivity {
         });
 
         this.listaTitulo = (ListView) findViewById(R.id.listaTitulo);
+        listaTitulo.setEmptyView((TextView)findViewById(R.id.titulosVazio));
         this.listaTitulo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

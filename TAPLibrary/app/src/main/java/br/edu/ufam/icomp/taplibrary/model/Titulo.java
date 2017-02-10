@@ -38,6 +38,10 @@ public class Titulo implements Serializable {
         this.anoPublicacao = anoPublicacao;
     }
 
+    public String toString() {
+        return this.titulo + "/" + this.autor;
+    }
+
     public int getId() {
         return id;
     }
@@ -116,5 +120,18 @@ public class Titulo implements Serializable {
 
     public void setAnoPublicacao(int anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!Titulo.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        final Titulo outro = (Titulo) obj;
+
+        return this.id == outro.id;
     }
 }

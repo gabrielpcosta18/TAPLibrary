@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import br.edu.ufam.icomp.taplibrary.R;
 import br.edu.ufam.icomp.taplibrary.adapter.UsuarioListaAdapter;
@@ -43,6 +44,7 @@ public class UsuarioListaActivity extends AppCompatActivity {
         });
 
         this.listaUsuario = (ListView) findViewById(R.id.listaUsuario);
+        this.listaUsuario.setEmptyView((TextView)findViewById(R.id.usuariosVazio));
         this.listaUsuario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -49,10 +49,15 @@ public class EmprestimoDAO {
                 cursor.getInt(3));
     }
 
-    public List<Emprestimo> todosEmprestimosLista() {
+    public List<Emprestimo> todosEmprestimosLista(boolean filtrar) {
         ArrayList<Emprestimo> emprestimos = new ArrayList<>();
-        Cursor cursor = this.bancoDeDados.rawQuery("SELECT * " +
-                " FROM " + NOME_TABELA + " WHERE foiDevolvido = 0", null);
+
+        String query = "SELECT * " +
+                " FROM " + NOME_TABELA;
+
+        if(filtrar) query += " WHERE foiDevolvido = 0";
+
+        Cursor cursor = this.bancoDeDados.rawQuery(query, null);
 
         while(cursor.moveToNext()) {
             emprestimos.add(emprestimoDoCursor(cursor));

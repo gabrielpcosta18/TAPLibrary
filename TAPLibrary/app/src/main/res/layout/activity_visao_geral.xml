@@ -101,7 +101,44 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quantidade de Empréstimos"/>
+            android:text="Empréstimos Pendentes"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.95"
+            />
+
+        <TextView
+            android:id="@+id/visaoGeralTotalEmprestimosAtivos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="29"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_menu_gallery"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="0.05"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Empréstimos Realizados"/>
 
         <View
             android:layout_width="0dp"
@@ -219,7 +256,7 @@
                 android:id="@+id/visaoGeralLivroMaisLido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Senhor dos Anéis: A Sociedade do Anel"
+                android:text="Sem dados"
                 android:textSize="16dp"/>
         </LinearLayout>
 
@@ -240,7 +277,7 @@
                 android:id="@+id/visaoGeralQuantidadeLivroMaisLido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lido 9 vezes"
+                android:text="Lido 0 vezes"
                 android:textSize="16dp"/>
         </LinearLayout>
     </LinearLayout>
@@ -249,6 +286,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"/>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -273,7 +312,7 @@
                 android:id="@+id/visaoGeralUsuarioMaisEmprestimos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gabriel Pereira da Costa"
+                android:text="Sem Dados"
                 android:textSize="16dp"/>
         </LinearLayout>
 
@@ -294,7 +333,7 @@
                 android:id="@+id/visaoGeralQuantidadeUsuarioMaisEmprestimos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Emprestou 20 vezes"
+                android:text="Emprestou 0 vezes"
                 android:textSize="16dp"/>
         </LinearLayout>
     </LinearLayout>

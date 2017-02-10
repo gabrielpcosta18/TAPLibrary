@@ -18,6 +18,7 @@ import br.edu.ufam.icomp.taplibrary.model.Usuario;
 public class VisaoGeralActivity extends AppCompatActivity {
     private TextView txtTotalUsuarios;
     private TextView txtTotalEmprestimos;
+    private TextView txtTotalEmprestimosPendentes;
     private TextView txtTotalLivros;
     private TextView txtLivroMaisLido;
     private TextView txtQuantidadeLivroMaisLido;
@@ -37,6 +38,7 @@ public class VisaoGeralActivity extends AppCompatActivity {
         this.setTitle("Visão Geral");
         this.txtTotalUsuarios = (TextView) findViewById(R.id.visaoGeralTotalUsuarios);
         this.txtTotalEmprestimos = (TextView) findViewById(R.id.visaoGeralTotalEmprestimos);
+        this.txtTotalEmprestimosPendentes = (TextView) findViewById(R.id.visaoGeralTotalEmprestimosAtivos);
         this.txtTotalLivros = (TextView) findViewById(R.id.visaoGeralTotalLivros);
         this.txtLivroMaisLido = (TextView) findViewById(R.id.visaoGeralLivroMaisLido);
         this.txtQuantidadeLivroMaisLido = (TextView) findViewById(R.id.visaoGeralQuantidadeLivroMaisLido);
@@ -52,14 +54,19 @@ public class VisaoGeralActivity extends AppCompatActivity {
 
         this.txtTotalUsuarios.setText(Integer.toString(usuarioDAO.todosUsuariosLista().size()));
         this.txtTotalLivros.setText(Integer.toString(tituloDAO.todosTitulosLista(false).size()));
-        this.txtTotalEmprestimos.setText(Integer.toString(emprestimoDAO.todosEmprestimosLista().size()));
+        this.txtTotalEmprestimos.setText(Integer.toString(emprestimoDAO.todosEmprestimosLista(false).size()));
+        this.txtTotalEmprestimosPendentes.setText(Integer.toString(emprestimoDAO.todosEmprestimosLista(true).size()));
 
         Pair<Titulo, Integer> tituloMaisLido = emprestimoDAO.tituloMaisLido();
-        this.txtLivroMaisLido.setText(tituloMaisLido.first.getTitulo());
-        this.txtQuantidadeLivroMaisLido.setText("Lido " + tituloMaisLido.second.toString() + " vezes");
+        if(tituloMaisLido != null) {
+            this.txtLivroMaisLido.setText(tituloMaisLido.first.getTitulo());
+            this.txtQuantidadeLivroMaisLido.setText("Lido " + tituloMaisLido.second.toString() + " vezes");
+        }
 
         Pair<Usuario, Integer> usuarioMaisEmprestimo = emprestimoDAO.usuarioMaisEmprestimo();
-        this.txtUsuarioMaisEmprestimo.setText(usuarioMaisEmprestimo.first.getNome());
-        this.txtQuantidadeUsuarioMaisEmprestimo.setText("Emprestou " + usuarioMaisEmprestimo.second.toString() + " vezes");
+        if(usuarioMaisEmprestimo != null) {
+            this.txtUsuarioMaisEmprestimo.setText(usuarioMaisEmprestimo.first.getNome());
+            this.txtQuantidadeUsuarioMaisEmprestimo.setText("Emprestou " + usuarioMaisEmprestimo.second.toString() + " vezes");
+        }
     }
 }

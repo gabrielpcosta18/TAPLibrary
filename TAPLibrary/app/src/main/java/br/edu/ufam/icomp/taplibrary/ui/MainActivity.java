@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity
 
     private void preencherLista() {
         EmprestimoListaAdapter adaptador = new EmprestimoListaAdapter(this,
-                R.layout.emprestimo_lista_item, new EmprestimoDAO(this).todosEmprestimosLista());
+                R.layout.emprestimo_lista_item, new EmprestimoDAO(this).todosEmprestimosLista(true));
         this.listaEmprestimo.setAdapter(adaptador);
     }
 

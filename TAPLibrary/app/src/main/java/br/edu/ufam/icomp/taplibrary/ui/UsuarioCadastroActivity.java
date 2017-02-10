@@ -40,6 +40,7 @@ public class UsuarioCadastroActivity extends AppCompatActivity {
     }
 
     private void iniciarComponentes() {
+        this.setTitle("Usuário");
         this.edtNome = (EditText) findViewById(R.id.cadastroUsuarioNome);
         this.edtLogin = (EditText) findViewById(R.id.cadastroUsuarioLogin);
         this.edtSenha = (EditText) findViewById(R.id.cadastroUsuarioSenha);

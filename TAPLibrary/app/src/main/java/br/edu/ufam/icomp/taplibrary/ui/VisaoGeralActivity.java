@@ -34,6 +34,7 @@ public class VisaoGeralActivity extends AppCompatActivity {
     }
 
     private void iniciarComponentes() {
+        this.setTitle("Visão Geral");
         this.txtTotalUsuarios = (TextView) findViewById(R.id.visaoGeralTotalUsuarios);
         this.txtTotalEmprestimos = (TextView) findViewById(R.id.visaoGeralTotalEmprestimos);
         this.txtTotalLivros = (TextView) findViewById(R.id.visaoGeralTotalLivros);

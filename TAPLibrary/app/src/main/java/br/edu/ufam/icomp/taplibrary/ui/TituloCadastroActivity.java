@@ -47,6 +47,7 @@ public class TituloCadastroActivity extends AppCompatActivity {
     }
 
     private void iniciarComponentes() {
+        this.setTitle("Título");
         edtTitulo = (EditText) findViewById(R.id.cadastroTituloTitulo);
         edtEditora = (EditText) findViewById(R.id.cadastroTituloEditora);
         edtAutor = (EditText) findViewById(R.id.cadastroTituloAutor);

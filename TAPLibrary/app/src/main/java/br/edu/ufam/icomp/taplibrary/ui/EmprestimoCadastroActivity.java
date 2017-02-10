@@ -40,6 +40,7 @@ public class EmprestimoCadastroActivity extends AppCompatActivity {
     }
 
     private void iniciarComponentes() {
+        this.setTitle("Empréstimo");
         CustomSpinnerAdapter tituloSpinnerAdapter = new CustomSpinnerAdapter(this,
                 android.R.layout.simple_list_item_1, new TituloDAO(this).todosTitulosLista());
         this.spnTitulo = (Spinner) findViewById(R.id.cadastroEmprestimoTitulo);

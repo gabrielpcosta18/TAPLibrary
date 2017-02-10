@@ -140,7 +140,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, EmprestimoCadastroActivity.class);
             startActivityForResult(intent, Constantes.ATUALIZAR_LISTAGEM);
         } else if (id == R.id.nav_visao_geral) {
-
+            Intent intent = new Intent(this, VisaoGeralActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_outros) {
 
         }

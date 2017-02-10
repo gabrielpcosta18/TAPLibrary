@@ -29,7 +29,8 @@
             android:label="@string/title_activity_titulo_lista"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.TituloCadastroActivity" />
-        <activity android:name=".ui.EmprestimoCadastroActivity"></activity>
+        <activity android:name=".ui.EmprestimoCadastroActivity" />
+        <activity android:name=".ui.VisaoGeralActivity"></activity>
     </application>
 
 </manifest>

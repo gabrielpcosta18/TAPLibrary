@@ -67,7 +67,7 @@
             android:background="#FFFFFFFF"
             android:layout_weight="0.7"/>
 
-        <Button
+        <!--Button
             android:id="@+id/btnCadastrar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -75,6 +75,6 @@
             android:textColor="#4144FF"
             android:textSize="10dp"
             android:background="#FFFFFFFF"
-            android:layout_weight="0.4"/>
+            android:layout_weight="0.4"/-->
     </LinearLayout>
 </LinearLayout>

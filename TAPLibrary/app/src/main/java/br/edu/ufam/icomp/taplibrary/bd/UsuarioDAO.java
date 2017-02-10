@@ -33,6 +33,15 @@ public class UsuarioDAO {
                 cursor.getInt(1));
     }
 
+    public boolean validarLogin(Usuario usuario) {
+        String query = "SELECT COUNT(*) FROM " + NOME_TABELA + " WHERE login = '" +
+                usuario.getLogin() + "' and senha = '" + usuario.getSenha() + "'";
+        Log.d("SQL", query);
+        Cursor cursor = this.bancoDeDados.rawQuery(query, null);
+        cursor.moveToNext();
+        return cursor.getInt(0) == 1;
+    }
+
     public Usuario usuarioPorId(int id) {
         String query = "SELECT * FROM " + NOME_TABELA + " WHERE _id = " + id;
 

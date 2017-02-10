@@ -34,12 +34,11 @@ public class UsuarioListaActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabUsuarioLista);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                fabOnClick();
             }
         });
 
@@ -59,6 +58,11 @@ public class UsuarioListaActivity extends AppCompatActivity {
             }
         });
         preencherLista();
+    }
+
+    private void fabOnClick() {
+        Intent intent = new Intent(this, UsuarioCadastroActivity.class);
+        startActivityForResult(intent, Constantes.ATUALIZAR_LISTAGEM);
     }
 
     private boolean listaUsuarioLongItemClicked(int p) {

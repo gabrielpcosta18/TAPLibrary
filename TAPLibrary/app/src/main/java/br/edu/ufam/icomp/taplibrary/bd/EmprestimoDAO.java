@@ -66,6 +66,23 @@ public class EmprestimoDAO {
         return emprestimos;
     }
 
+    public List<Titulo> titulosPorUsuario(Usuario usuario) {
+        ArrayList<Titulo> titulos = new ArrayList<>();
+
+        String query = "SELECT * " +
+                " FROM " + NOME_TABELA;
+
+        query += " WHERE usuarioId = " + Integer.toString(usuario.getId());
+
+        Cursor cursor = this.bancoDeDados.rawQuery(query, null);
+
+        while(cursor.moveToNext()) {
+            titulos.add(emprestimoDoCursor(cursor).getTitulo());
+        }
+
+        return titulos;
+    }
+
     public boolean adicionarEmprestimo(Emprestimo emprestimo) {
         try {
             String sqlCmd = "INSERT INTO " + NOME_TABELA +

@@ -30,7 +30,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.TituloCadastroActivity" />
         <activity android:name=".ui.EmprestimoCadastroActivity" />
-        <activity android:name=".ui.VisaoGeralActivity"></activity>
+        <activity android:name=".ui.VisaoGeralActivity" />
+        <activity android:name=".ui.RelatorioLivrosPorUsuario"></activity>
     </application>
 
 </manifest>

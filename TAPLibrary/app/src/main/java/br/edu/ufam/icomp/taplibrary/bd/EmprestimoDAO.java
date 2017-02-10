@@ -5,11 +5,14 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ufam.icomp.taplibrary.model.Emprestimo;
+import br.edu.ufam.icomp.taplibrary.model.Titulo;
+import br.edu.ufam.icomp.taplibrary.model.Usuario;
 
 /**
  * Created by gabri on 09/02/2017.
@@ -89,5 +92,37 @@ public class EmprestimoDAO {
             Log.e("TAPLibrary", e.getMessage());
             return false;
         }
+    }
+
+    public Pair<Titulo, Integer> tituloMaisLido() {
+        String query = "SELECT tituloId, count(tituloId) as Counter FROM " +
+                NOME_TABELA + " GROUP BY tituloId ORDER BY Counter DESC LIMIT 1";
+
+        Cursor cursor = this.bancoDeDados.rawQuery(query, null);
+        if(cursor.moveToNext()) {
+            Titulo titulo = new TituloDAO(contexto).tituloPorId(cursor.getInt(0));
+
+            Pair<Titulo, Integer> value = new Pair<>(titulo, new Integer(cursor.getInt(1)));
+            cursor.close();
+
+            return value;
+        }
+        return null;
+    }
+
+    public Pair<Usuario, Integer> usuarioMaisEmprestimo() {
+        String query = "SELECT usuarioId, count(usuarioId) as Counter FROM " +
+                NOME_TABELA + " GROUP BY usuarioId ORDER BY Counter DESC LIMIT 1";
+
+        Cursor cursor = this.bancoDeDados.rawQuery(query, null);
+        if(cursor.moveToNext()) {
+            Usuario usuario = new UsuarioDAO(contexto).usuarioPorId(cursor.getInt(0));
+
+            Pair<Usuario, Integer> value = new Pair<>(usuario, new Integer(cursor.getInt(1)));
+            cursor.close();
+
+            return value;
+        }
+        return null;
     }
 }

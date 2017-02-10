@@ -37,6 +37,7 @@
         />
 
         <TextView
+            android:id="@+id/visaoGeralTotalLivros"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="29"/>
@@ -73,6 +74,7 @@
             />
 
         <TextView
+            android:id="@+id/visaoGeralTotalUsuarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="29"/>
@@ -108,6 +110,7 @@
             />
 
         <TextView
+            android:id="@+id/visaoGeralTotalEmprestimos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="29"/>
@@ -118,7 +121,7 @@
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"/>
 
-    <LinearLayout
+    <!--LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -186,6 +189,60 @@
 
         </LinearLayout>
 
+    </LinearLayout-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Livro mais lido"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/visaoGeralLivroMaisLido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senhor dos Anéis: A Sociedade do Anel"
+                android:textSize="16dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.5"
+            android:layout_gravity="center_vertical"
+            android:gravity="right">
+
+            <!--TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantidade"/-->
+
+            <TextView
+                android:id="@+id/visaoGeralQuantidadeLivroMaisLido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lido 9 vezes"
+                android:textSize="16dp"/>
+        </LinearLayout>
     </LinearLayout>
 
     <View
@@ -209,12 +266,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Livro mais lido"/>
+                android:text="Uusário que mais emprestou"
+                android:layout_marginBottom="6dp"/>
 
             <TextView
+                android:id="@+id/visaoGeralUsuarioMaisEmprestimos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Senhor dos Anéis: A Sociedade do Anel"
+                android:text="Gabriel Pereira da Costa"
                 android:textSize="16dp"/>
         </LinearLayout>
 
@@ -222,17 +281,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="0.5">
+            android:layout_weight="0.5"
+            android:layout_gravity="center_vertical"
+            android:gravity="right">
 
-            <TextView
+            <!--TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quantidade"/>
+                android:text="Quantidade"/-->
 
             <TextView
+                android:id="@+id/visaoGeralQuantidadeUsuarioMaisEmprestimos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9"
+                android:text="Emprestou 20 vezes"
                 android:textSize="16dp"/>
         </LinearLayout>
     </LinearLayout>

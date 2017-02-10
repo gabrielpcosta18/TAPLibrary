@@ -44,8 +44,8 @@ public class EmprestimoDAO {
 
     private Emprestimo emprestimoDoCursor(Cursor cursor) {
         return new Emprestimo(cursor.getInt(0),
-                new TituloDAO(this.contexto).tituloPorId(cursor.getInt(2)),
-                new UsuarioDAO(this.contexto).usuarioPorId(cursor.getInt(1)));
+                new TituloDAO(this.contexto).tituloPorId(cursor.getInt(1)),
+                new UsuarioDAO(this.contexto).usuarioPorId(cursor.getInt(2)));
     }
 
     public List<Emprestimo> todosEmprestimosLista() {

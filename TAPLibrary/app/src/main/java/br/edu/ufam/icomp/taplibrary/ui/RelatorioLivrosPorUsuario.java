@@ -33,6 +33,7 @@ public class RelatorioLivrosPorUsuario extends AppCompatActivity {
     }
 
     private void iniciarComponentes() {
+        this.setTitle("Livros por Usuário");
         usuarios = new UsuarioDAO(this).todosUsuariosLista();
 
         CustomSpinnerAdapter adaptador = new CustomSpinnerAdapter(this,

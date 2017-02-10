@@ -1,12 +1,15 @@
 package br.edu.ufam.icomp.taplibrary;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+import br.edu.ufam.icomp.taplibrary.ui.MainActivity;
+
+public class LoginActivity extends AppCompatActivity {
     private EditText edtUsuario;
     private EditText edtSenha;
     private Button btnLogin;
@@ -15,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         iniciarComponentes();
     }
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void btnLoginOnClick() {
-
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

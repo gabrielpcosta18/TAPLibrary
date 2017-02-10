@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_usuario"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Usuário" />
+        <item
+            android:id="@+id/nav_titulo"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Títulos" />
+        <item
+            android:id="@+id/nav_emprestimo"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Empréstimo" />
+    </group>
+
+    <item android:title="Relatórios">
+        <menu>
+            <item
+                android:id="@+id/nav_visao_geral"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Visão Geral" />
+            <item
+                android:id="@+id/nav_outros"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Outros" />
+        </menu>
+    </item>
+
+</menu>

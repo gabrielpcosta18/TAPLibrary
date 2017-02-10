@@ -1,6 +1,7 @@
 package br.edu.ufam.icomp.taplibrary.bd;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,10 +27,10 @@ public class UsuarioDAO {
 
     private Usuario usuarioDoCursor(Cursor cursor) {
         return new Usuario(cursor.getInt(0),
-                cursor.getString(1),
+                cursor.getString(4),
                 cursor.getString(2),
                 cursor.getString(3),
-                cursor.getInt(9));
+                cursor.getInt(1));
     }
 
     public Usuario usuarioPorId(int id) {
@@ -68,7 +69,7 @@ public class UsuarioDAO {
                     "(login, senha, nome, admin)" +
                     " VALUES ('" + usuario.getLogin() +
                     "', '" + usuario.getSenha() +
-                    "', '" + usuario.getSenha() +
+                    "', '" + usuario.getNome() +
                     "', '" + Integer.toString(usuario.getAdmin())
                     + "')";
 
@@ -83,15 +84,34 @@ public class UsuarioDAO {
         }
     }
 
-    public boolean atualizarUsuario(Usuario usuario) {
+    public boolean deletarUsuario(Usuario usuario) {
         try {
-            /*String sqlCmd = "UPDATE " + NOME_TABELA +
-                    " SET name = '" + customer.getName() + "' "  +
-                    " WHERE _id = " + customer.getId();
+            String sqlCmd = "DELETE FROM " + NOME_TABELA +
+                    " WHERE _id = " + Integer.toString(usuario.getId());
 
             Log.d("SQL", sqlCmd);
 
-            this.bancoDeDados.execSQL(sqlCmd);*/
+            this.bancoDeDados.execSQL(sqlCmd);
+            return true;
+        }
+        catch(SQLException e) {
+            Log.e("TAPLibrary", e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean atualizarUsuario(Usuario usuario) {
+        try {
+            String sqlCmd = "UPDATE " + NOME_TABELA +
+                    " SET nome = '" + usuario.getNome() +
+                    "', login = '"  + usuario.getLogin() +
+                    "', senha = '" + usuario.getSenha() +
+                    "', admin = " + Integer.toString(usuario.getAdmin()) +
+                    " WHERE _id = " + usuario.getId();
+
+            Log.d("SQL", sqlCmd);
+
+            this.bancoDeDados.execSQL(sqlCmd);
             return true;
         }
         catch(SQLException e) {

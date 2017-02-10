@@ -101,7 +101,7 @@ public class TituloListaActivity extends AppCompatActivity {
 
     private void preencherLista() {
         TituloListaAdapter adaptador = new TituloListaAdapter(this,
-                R.layout.titulo_lista_item, new TituloDAO(this).todosTitulosLista(true));
+                R.layout.titulo_lista_item, new TituloDAO(this).todosTitulosLista(false));
         this.listaTitulo.setAdapter(adaptador);
     }
 

@@ -1,85 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_titulo_cadastro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.edu.ufam.icomp.taplibrary.ui.TituloCadastroActivity"
-    android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/cadastroTituloTitulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Título"/>
-
-    <EditText
-        android:id="@+id/cadastroTituloAutor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Autor"/>
-
-    <EditText
-        android:id="@+id/cadastroTituloEditora"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Editora"/>
-
-    <EditText
-        android:id="@+id/cadastroTituloDescricao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Descrição"/>
-
-    <EditText
-        android:id="@+id/cadastroTituloIdentUnique"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Identificação Única"/>
+    tools:context="br.edu.ufam.icomp.taplibrary.ui.TituloCadastroActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tipo"/>
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Título"
+            android:layout_marginBottom="2dp"/>
+        <EditText
+            android:id="@+id/cadastroTituloTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Título"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autor"
+            android:layout_marginBottom="2dp"/>
+        <EditText
+            android:id="@+id/cadastroTituloAutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Autor"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Editora"
+            android:layout_marginBottom="2dp"/>
+        <EditText
+            android:id="@+id/cadastroTituloEditora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Editora"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrição"
+            android:layout_marginBottom="2dp"/>
+        <EditText
+            android:id="@+id/cadastroTituloDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descrição"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Identificação Única"
+            android:layout_marginBottom="2dp"/>
+        <EditText
+            android:id="@+id/cadastroTituloIdentUnique"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Identificação Única"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo"
+            android:layout_marginBottom="2dp"/>
         <Spinner
             android:id="@+id/cadastroTituloTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tipo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Número de Exemplares"
+            android:layout_marginBottom="2dp"/>
+        <EditText
+            android:id="@+id/cadastroTituloNumExemplares"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número de Exemplares"
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dias de Empréstimo"
+            android:layout_marginBottom="2dp"/>
+        <EditText
+            android:id="@+id/cadastroTituloDiasEmprestimo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Dias de Empréstimo"
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ano de Publicação"
+            android:layout_marginBottom="2dp"/>
+        <EditText
+            android:id="@+id/cadastroTituloAnoPublicacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ano de publicação"
+            android:inputType="number"/>
+
+        <Button
+            android:id="@+id/btnConfirmarCadastroTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirmar"/>
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/cadastroTituloNumExemplares"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Número de Exemplares"
-        android:inputType="number"/>
-
-    <EditText
-        android:id="@+id/cadastroTituloDiasEmprestimo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Dias de Empréstimo"
-        android:inputType="number"/>
-
-    <EditText
-        android:id="@+id/cadastroTituloAnoPublicacao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ano de publicação"
-        android:inputType="number"/>
-
-    <Button
-        android:id="@+id/btnConfirmarCadastroTitulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Confirmar"/>
-</LinearLayout>
+</ScrollView>

@@ -51,7 +51,7 @@ public class VisaoGeralActivity extends AppCompatActivity {
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO(this);
 
         this.txtTotalUsuarios.setText(Integer.toString(usuarioDAO.todosUsuariosLista().size()));
-        this.txtTotalLivros.setText(Integer.toString(tituloDAO.todosTitulosLista().size()));
+        this.txtTotalLivros.setText(Integer.toString(tituloDAO.todosTitulosLista(false).size()));
         this.txtTotalEmprestimos.setText(Integer.toString(emprestimoDAO.todosEmprestimosLista().size()));
 
         Pair<Titulo, Integer> tituloMaisLido = emprestimoDAO.tituloMaisLido();

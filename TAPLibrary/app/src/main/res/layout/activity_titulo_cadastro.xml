@@ -53,26 +53,29 @@
             android:id="@+id/cadastroTituloTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tipo"/>
+            android:hint="Tipo" />
     </LinearLayout>
 
     <EditText
         android:id="@+id/cadastroTituloNumExemplares"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Número de Exemplares"/>
+        android:hint="Número de Exemplares"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/cadastroTituloDiasEmprestimo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Dias de Empréstimo"/>
+        android:hint="Dias de Empréstimo"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/cadastroTituloAnoPublicacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ano de publicação"/>
+        android:hint="Ano de publicação"
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/btnConfirmarCadastroTitulo"

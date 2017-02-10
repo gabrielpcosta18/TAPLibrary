@@ -45,13 +45,14 @@ public class EmprestimoDAO {
     private Emprestimo emprestimoDoCursor(Cursor cursor) {
         return new Emprestimo(cursor.getInt(0),
                 new TituloDAO(this.contexto).tituloPorId(cursor.getInt(1)),
-                new UsuarioDAO(this.contexto).usuarioPorId(cursor.getInt(2)));
+                new UsuarioDAO(this.contexto).usuarioPorId(cursor.getInt(2)),
+                cursor.getInt(3));
     }
 
     public List<Emprestimo> todosEmprestimosLista() {
         ArrayList<Emprestimo> emprestimos = new ArrayList<>();
         Cursor cursor = this.bancoDeDados.rawQuery("SELECT * " +
-                " FROM " + NOME_TABELA + "", null);
+                " FROM " + NOME_TABELA + " WHERE foiDevolvido = 0", null);
 
         while(cursor.moveToNext()) {
             emprestimos.add(emprestimoDoCursor(cursor));
@@ -79,13 +80,12 @@ public class EmprestimoDAO {
 
     public boolean atualizarEmprestimo(Emprestimo emprestimo) {
         try {
-            /*String sqlCmd = "UPDATE " + NOME_TABELA +
-                    " SET employeerestitutionid = " + rental.getEmployeeRestitution().getId() + ", wasdeveloped = "
-                    + (rental.isWasDeveloped()? "1":"0") +
-                    " WHERE _id = " + rental.getId();
+            String sqlCmd = "UPDATE " + NOME_TABELA +
+                    " SET foiDevolvido = " + Integer.toString(emprestimo.getFoiDevolvido()) +
+                    " WHERE _id = " + emprestimo.getId();
 
             Log.d("SQL", sqlCmd);
-            this.database.execSQL(sqlCmd);*/
+            this.bancoDeDados.execSQL(sqlCmd);
             return true;
         }
         catch(SQLException e) {

@@ -13,15 +13,18 @@ public class Emprestimo implements Serializable {
     private Titulo titulo;
     private Usuario usuario;
 
+    private int foiDevolvido;
+
     public Emprestimo() {
         this.id = -1;
     }
 
-    public Emprestimo(int id, Titulo titulo, Usuario usuario) {
+    public Emprestimo(int id, Titulo titulo, Usuario usuario, int foiDevolvido) {
         this();
         this.id = id;
         this.usuario = usuario;
         this.titulo = titulo;
+        this.foiDevolvido = foiDevolvido;
     }
 
     public int getId() {
@@ -46,5 +49,13 @@ public class Emprestimo implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public int getFoiDevolvido() {
+        return foiDevolvido;
+    }
+
+    public void setFoiDevolvido(int foiDevolvido) {
+        this.foiDevolvido = foiDevolvido;
     }
 }

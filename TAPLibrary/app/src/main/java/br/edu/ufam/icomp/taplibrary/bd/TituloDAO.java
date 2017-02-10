@@ -51,14 +51,21 @@ public class TituloDAO {
         return null;
     }
 
-    public Cursor todosTitulosCursor() {
-        return this.bancoDeDados.rawQuery("SELECT *" +
-                " FROM " + NOME_TABELA + " ORDER BY titulo", null);
+    public Cursor todosTitulosCursor(boolean filtrar) {
+        String query = "SELECT *" +
+                " FROM " + NOME_TABELA + " as e ";
+
+        if(filtrar)
+            query += " WHERE numeroExemplares > (SELECT COUNT(*) FROM Emprestimo WHERE tituloId = e._id and foiDevolvido = 0)";
+
+        query += " ORDER BY titulo";
+
+        return this.bancoDeDados.rawQuery(query, null);
     }
 
-    public List todosTitulosLista() {
+    public List todosTitulosLista(boolean filtrar) {
         ArrayList<Titulo> titulos = new ArrayList<>();
-        Cursor cursor = todosTitulosCursor();
+        Cursor cursor = todosTitulosCursor(filtrar);
 
         while(cursor.moveToNext()) {
             titulos.add(tituloDoCursor(cursor));

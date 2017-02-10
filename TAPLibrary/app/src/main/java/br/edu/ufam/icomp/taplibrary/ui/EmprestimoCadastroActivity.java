@@ -41,8 +41,9 @@ public class EmprestimoCadastroActivity extends AppCompatActivity {
 
     private void iniciarComponentes() {
         this.setTitle("Empréstimo");
+
         CustomSpinnerAdapter tituloSpinnerAdapter = new CustomSpinnerAdapter(this,
-                android.R.layout.simple_list_item_1, new TituloDAO(this).todosTitulosLista());
+                android.R.layout.simple_list_item_1, new TituloDAO(this).todosTitulosLista(true));
         this.spnTitulo = (Spinner) findViewById(R.id.cadastroEmprestimoTitulo);
         this.spnTitulo.setAdapter(tituloSpinnerAdapter);
 
@@ -66,6 +67,10 @@ public class EmprestimoCadastroActivity extends AppCompatActivity {
 
         this.spnUsuario.setSelection(usuarioAdaptador.getItemsList().indexOf(this.emprestimo.getUsuario()));
         this.spnTitulo.setSelection(tituloAdaptador.getItemsList().indexOf(this.emprestimo.getTitulo()));
+
+        this.btnConfirmar.setText("Devolver");
+        this.spnUsuario.setEnabled(false);
+        this.spnTitulo.setEnabled(false);
     }
 
     private void btnConfirmarOnClick() {
@@ -75,6 +80,7 @@ public class EmprestimoCadastroActivity extends AppCompatActivity {
         this.emprestimo.setUsuario((Usuario) spnUsuario.getSelectedItem());
 
         if(this.emprestimo.getId() != -1) {
+            this.emprestimo.setFoiDevolvido(1);
             emprestimoDAO.atualizarEmprestimo(this.emprestimo);
         }
         else {

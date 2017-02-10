@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import br.edu.ufam.icomp.taplibrary.R;
 import br.edu.ufam.icomp.taplibrary.bd.EmprestimoDAO;
@@ -66,19 +67,25 @@ public class UsuarioCadastroActivity extends AppCompatActivity {
     private void btnConfirmarOnClick() {
         UsuarioDAO usuarioDAO = new UsuarioDAO(this);
 
-        this.usuario.setNome(edtNome.getText().toString());
-        this.usuario.setLogin(edtLogin.getText().toString());
-        this.usuario.setSenha(edtSenha.getText().toString());
-        this.usuario.setAdmin(swcAdministrador.isChecked()? 1 : 0);
-
-        if(this.usuario.getId() != -1) {
-            usuarioDAO.atualizarUsuario(this.usuario);
+        if(edtNome.getText().toString().matches("")
+                || edtLogin.getText().toString().matches("")
+                || edtSenha.getText().toString().matches("")) {
+            Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
         }
         else {
-            usuarioDAO.adicionarUsuario(this.usuario);
-        }
+            this.usuario.setNome(edtNome.getText().toString());
+            this.usuario.setLogin(edtLogin.getText().toString());
+            this.usuario.setSenha(edtSenha.getText().toString());
+            this.usuario.setAdmin(swcAdministrador.isChecked() ? 1 : 0);
 
-        this.setResult(RESULT_OK);
-        this.finish();
+            if (this.usuario.getId() != -1) {
+                usuarioDAO.atualizarUsuario(this.usuario);
+            } else {
+                usuarioDAO.adicionarUsuario(this.usuario);
+            }
+
+            this.setResult(RESULT_OK);
+            this.finish();
+        }
     }
 }

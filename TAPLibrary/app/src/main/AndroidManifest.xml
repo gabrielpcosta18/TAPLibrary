@@ -23,7 +23,12 @@
             android:name=".ui.UsuarioListaActivity"
             android:label="@string/title_activity_usuario_lista"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.UsuarioCadastroActivity"></activity>
+        <activity android:name=".ui.UsuarioCadastroActivity" />
+        <activity
+            android:name=".ui.TituloListaActivity"
+            android:label="@string/title_activity_titulo_lista"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.TituloCadastroActivity"></activity>
     </application>
 
 </manifest>

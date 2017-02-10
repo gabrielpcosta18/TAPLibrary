@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ufam.icomp.taplibrary.model.Titulo;
+import br.edu.ufam.icomp.taplibrary.model.Usuario;
 
 /**
  * Created by gabri on 09/02/2017.
@@ -25,8 +26,8 @@ public class TituloDAO {
 
     private Titulo tituloDoCursor(Cursor cursor) {
         return new Titulo(cursor.getInt(0),
-                cursor.getString(1),
                 cursor.getString(2),
+                cursor.getString(1),
                 cursor.getString(3),
                 cursor.getString(4),
                 cursor.getString(5),
@@ -93,15 +94,39 @@ public class TituloDAO {
         }
     }
 
-    public boolean atualizarTitulo(Titulo titulo) {
+    public boolean deletarTitulo(Titulo titulo) {
         try {
-            /*String sqlCmd = "UPDATE " + NOME_TABELA +
-                    " SET name = '" + customer.getName() + "' "  +
-                    " WHERE _id = " + customer.getId();
+            String sqlCmd = "DELETE FROM " + NOME_TABELA +
+                    " WHERE _id = " + Integer.toString(titulo.getId());
 
             Log.d("SQL", sqlCmd);
 
-            this.bancoDeDados.execSQL(sqlCmd);*/
+            this.bancoDeDados.execSQL(sqlCmd);
+            return true;
+        }
+        catch(SQLException e) {
+            Log.e("TAPLibrary", e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean atualizarTitulo(Titulo titulo) {
+        try {
+            String sqlCmd = "UPDATE " + NOME_TABELA +
+                    " SET titulo = '" + titulo.getTitulo() + "' "  +
+                    ", editora = '" + titulo.getEditora() + "' "  +
+                    ", autor = '" + titulo.getAutor() + "' "  +
+                    ", descricao = '" + titulo.getDescricao() + "' "  +
+                    ", tipo = '" + titulo.getTipo() + "' "  +
+                    ", identUnique = '" + titulo.getIdentUnique() + "' "  +
+                    ", numeroExemplares = " + Integer.toString(titulo.getNumeroExemplares()) + " "  +
+                    ", diasEmprestimo = " + Integer.toString(titulo.getDiasEmprestimo()) + " "  +
+                    ", anoPublicacao = " + Integer.toString(titulo.getAnoPublicacao()) + " "  +
+                    " WHERE _id = " + titulo.getId();
+
+            Log.d("SQL", sqlCmd);
+
+            this.bancoDeDados.execSQL(sqlCmd);
             return true;
         }
         catch(SQLException e) {

@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_titulo) {
-
+            Intent intent = new Intent(this, TituloListaActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_emprestimo) {
 
         } else if (id == R.id.nav_visao_geral) {
